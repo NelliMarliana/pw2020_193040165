@@ -1,48 +1,45 @@
 <?php 
-    $conn = mysqli_connect("localhost", "root", "") or die("Koneksi ke DB gagal");
-
-    mysqli_select_db($conn, "pw_193040165") or die("Database salah");
-
+    $conn = mysqli_connect("localhost", "root", "") or die("Koneksi ke DB Gagal");
+    mysqli_select_db($conn, "pw2020_193040165") or die("Database Salah");
     $result = mysqli_query($conn, "SELECT *FROM pakaian");
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Latihan 5 A</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <table cellpadding="10" cellspacing="0" border="1">
-        <tr>
-            <h1>NELSEU</h1>
-            <th>NO</th>
-            <th>Foto</th>
-            <th>Jenis Pakaian</th>
-            <th>Ukuran</th>
-            <th>Harga</th>
-            <th>Stok</th>
-            <th>Keterangan</th>
-        </tr>
-
-        <?php $n = 1; ?>
-        <?php while($row = mysqli_fetch_assoc($result)): ?>
-                
+    <div class="container">
+        <table cellpadding="10" cellspacing="0" border="1">
             <tr>
-                <td><?= $n; ?></td>
-                <td><img src="assets/img/<?= $row["FOTO"]; ?>"></td>
-                <td><?php echo $row["JENIS PAKAIAN"]; ?></td>
-                <td><?php echo $row["UKURAN"]; ?></td>
-                <td><?php echo $row["HARGA"]; ?></td>
-                <td><?php echo $row["STOK"]; ?></td>
-                <td><?php echo $row["KETERANGAN"]; ?></td>
+                <h1>NELSEU</h1>
+                <th>NO</th>
+                <th>GAMBAR</th>
+                <th>JENIS_PAKAIAN</th>
+                <th>UKURAN</th>
+                <th>HARGA</th>
+                <th>STOK</th>
+                <th>KETERANGAN</th>
             </tr>
-    
-        <?php $n++; ?>
-        <?php endwhile ?>
-    </table>
+
+            <?php $i = 1; ?>
+            <?php while($row = mysqli_fetch_assoc($result)): ?>
+                    
+                <tr>
+                    <td><?= $i; ?></td>
+                    <td><img src="assets/img/<?= $row["GAMBAR"]; ?>" width="100"></td>
+                    <td><?= $row["JENIS_PAKAIAN"]; ?></td>
+                    <td><?= $row["UKURAN"]; ?></td>
+                    <td><?= $row["HARGA"]; ?></td>
+                    <td><?= $row["STOK"]; ?></td>
+                    <td><?= $row["KETERANGAN"]; ?></td>
+                </tr>
+        
+            <?php $i++; ?>
+            <?php endwhile ?>
+        </table>
+    </div>
 </body>
 </html>
