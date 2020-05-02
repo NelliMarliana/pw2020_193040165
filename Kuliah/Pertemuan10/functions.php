@@ -1,19 +1,17 @@
 <?php
-    function koneksi() {
-        return mysqli_connect('localhost', 'root', '', 'pw_193040165');
-    }
-
+    $conn = mysqli_connect("localhost", "root", "", "pw2020_193040165");
+    
     function query($query) {
-        $conn = koneksi();
+        global $conn;
         $result = mysqli_query($conn, $query);
-        
+
         if (mysqli_num_rows($result) == 1) {
-            return mysqli_fetch_assoc($result);
+            return mysqli_fetch_assoc($result);       
         }
 
         $rows = [];
         
-        while ($row = mysqli_fetch_assoc($result)) {
+        while($row = mysqli_fetch_assoc($result)) {
             $rows[] = $row;
         }
 
@@ -21,19 +19,21 @@
     }
 
     function tambah($data) {
-        $conn = koneksi();
-        $nama = htmlspecialchars($data['Nama']);
-        $nrp = htmlspecialchars($data['Nrp']);
-        $email = htmlspecialchars($data['Email']);
-        $jurusan = htmlspecialchars($data['Jurusan']);
-        $gambar = htmlspecialchars($data['Gambar']);
+        global $conn;
+        $NRP = htmlspecialchars($data["NRP"]);
+        $NAMA = htmlspecialchars($data["NAMA"]);
+        $EMAIL = htmlspecialchars($data["EMAIL"]);
+        $JURUSAN = htmlspecialchars($data["JURUSAN"]);
+        $GAMBAR = htmlspecialchars($data["GAMBAR"]);
 
-        $query = "INSERT INTO mahasiwa
+        $query = "INSERT INTO mahasiswa
                     VALUES
-                        (null, '$nama', '$nrp', '$email', '$jurusan', '$gambar');
-                ";
-
+                    ('', '$NRP', '$NAMA', '$EMAIL', '$JURUSAN', '$GAMBAR') 
+                    ";
         mysqli_query($conn, $query);
+
         echo mysqli_error($conn);
+
         return mysqli_affected_rows($conn);
     }
+?>

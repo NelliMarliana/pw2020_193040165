@@ -6,14 +6,14 @@
             echo "
                 <script>
                     alert('Data Berhasil Ditambahkan');
-                    document.location.href = 'Latihan3.php';
+                    document.location.href = 'index.php';
                 </script>
             ";
         } else {
             echo "
                 <script>
                     alert('Data Gagal Ditambahkan');
-                    document.location.href = 'Latihan3.php';
+                    document.location.href = 'index.php';
                 </script>
             ";
         }
@@ -64,7 +64,7 @@
             <li>
                 <button type="submit" name="submit">Tambah Data</button>
                 <button type="submit">
-                    <a href="Latihan3.php">Kembali</a>
+                    <a href="index.php">Kembali</a>
                 </button>
             </li>
         </ul>

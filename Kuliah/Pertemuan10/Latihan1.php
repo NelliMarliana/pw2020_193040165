@@ -1,6 +1,6 @@
 <?php
-    $conn = mysqli_connect('localhost', 'root', '', 'pw_193040165');
-    $result = mysqli_query($conn, "SELECT * FROM mahasiwa");
+    $conn = mysqli_connect('localhost', 'root', '', 'pw2020_193040165');
+    $result = mysqli_query($conn, "SELECT * FROM mahasiswa");
     $rows = [];
 
     while($row = mysqli_fetch_assoc($result)) {
@@ -22,26 +22,27 @@
     <table border='1' cellpandding='10' cellspacing='0'>
         <tr>
             <th>#</th>
-            <th>Gambar</th>
+            <th>GAMBAR</th>
             <th>NRP</th>
-            <th>Nama</th>
-            <th>Email</th>
-            <th>Jurusan</th>
-            <th>Aksi</th>
+            <th>NAMA</th>
+            <th>EMAIL</th>
+            <th>JURUSAN</th>
+            <th>AKSI</th>
         </tr>
 
-        <?php $i = 1;
-        foreach ($mahasiswa as $m) : ?>
-
+        <?php $i = 1; ?>
+        <?php foreach($mahasiswa as $row): ?>
+        
         <tr>
-            <td><?= $i++ ?></td>
-            <td><img src="img/<?= $m['Gambar']; ?>" width="100px"></td>
-            <td><?= $m['NRP']; ?></td>
-            <td><?= $m['Nama']; ?></td>
-            <td><?= $m['Email']; ?></td>
-            <td><?= $m['Jurusan']; ?></td>
+            <td><?= $i++; ?></td>
+            <td><img src="img/<?= $row["GAMBAR"]; ?>" width="100"></td>
+            <td><?= $row["NRP"]; ?></td>
+            <td><?= $row["NAMA"]; ?></td>
+            <td><?= $row["EMAIL"]; ?></td>
+            <td><?= $row["JURUSAN"]; ?></td>
             <td>
-                <a href="">Ubah</a> | <a href="">Hapus</a>
+                <a href="">Ubah</a> | 
+                <a href="">Hapus</a>
             </td>
         </tr>
 

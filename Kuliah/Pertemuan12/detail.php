@@ -2,7 +2,7 @@
     require 'functions.php';
     
     if(!isset($_GET['ID'])) {
-        header("location: ../Latihan3.php");
+        header("location: ../index.php");
         exit;
     }
 
@@ -27,10 +27,10 @@
         <li>EMAIL : <?= $mahasiswa["EMAIL"]; ?></li><br>
         <li>JURUSAN : <?= $mahasiswa["JURUSAN"]; ?></li><br><br>
         <li>
-            <a href="">Ubah</a> | 
-            <a href="">Hapus</a>
+            <a href="ubah.php?ID=<?= $mahasiswa["ID"]; ?>">Ubah</a> | 
+            <a href="hapus.php?ID=<?= $mahasiswa["ID"]; ?>" onclick="return confirm('Apakah Anda Yakin akan Menghapus Data?');">Hapus</a>
         </li><br><br>
-        <li><a href="Latihan3.php">Kembali ke daftar mahasiswa</a></li>
+        <li><a href="index.php">Kembali ke daftar mahasiswa</a></li>
     </ul>
 </body>
 </html>
